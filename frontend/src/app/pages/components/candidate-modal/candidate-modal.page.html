@@ -1,0 +1,29 @@
+<ion-list>
+  <ion-item>
+    <ion-label>Position</ion-label>
+    <ion-select
+      multiple="false"
+      [(ngModel)]="position"
+      placeholder="Select Position"
+    >
+      <ion-select-option *ngFor="let pos of positions" value="{{pos}}"
+        >{{pos}}</ion-select-option
+      >
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Candidate Number</ion-label>
+    <ion-input type="number" [(ngModel)]="candidateNumber"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Full Name</ion-label>
+    <ion-input type="text" [(ngModel)]="fullname"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating"> Nickname </ion-label>
+    <ion-input type="text" [(ngModel)]="nickname"></ion-input>
+  </ion-item>
+</ion-list>
+<ion-button (click)="addCandidate()" expand="block" fill="clear" shape="round">
+  Add Candidate
+</ion-button>

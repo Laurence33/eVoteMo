@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registrations</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Pending Registrations</ion-label>
+    </ion-list-header>
+    <ion-item lines="inset" *ngFor="let reg of registrations">
+      <ion-label
+        >{{reg.FirstName}} {{reg.MiddleName}} {{reg.LastName}}</ion-label
+      >
+      <ion-button
+        slot="end"
+        (click)="presentModal(reg.id ,reg.FirstName, reg.MiddleName, reg.LastName,reg.Age, reg.Email, reg.Birthdate, reg.Gender, reg.VoterId)"
+        fill="clear"
+      >
+        View
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

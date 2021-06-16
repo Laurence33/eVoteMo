@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>schedule</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Voting Schedule</ion-label>
+    <ion-input type="date" [(ngModel)]="votingSchedule"></ion-input>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-button
+      (click)="submitSchedule()"
+      expand="block"
+      fill="clear"
+      shape="round"
+      slot="end"
+    >
+      Submit Schedule
+    </ion-button>
+  </ion-item>
+</ion-content>

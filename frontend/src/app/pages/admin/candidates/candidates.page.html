@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Candidates</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Pending Registrations</ion-label>
+    </ion-list-header>
+    <ion-item lines="inset" *ngFor="let position of candidatesCount | keyvalue">
+      <ion-label> {{position.key}} </ion-label>
+      <ion-badge slot="end" color="primary">{{position.value}}</ion-badge>
+    </ion-item>
+  </ion-list>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addCandidate()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
