@@ -28,7 +28,7 @@
 
 .my-custom-modal-class   {
     --backdrop-opacity: 0.8 !important;
-  
+
     .modal-wrapper {
       --height: 40% !important;
       position: absolute;
@@ -36,4 +36,15 @@
     }
 
     border-radius: 0;
-}  
+}
+
+// Applies a text wrap on ion options
+.alert-tappable.alert-radio {
+  height: auto;
+  contain: content;
+}
+
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios {
+  white-space: normal;
+}

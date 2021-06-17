@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{position}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>List of Candidates</ion-label>
+    </ion-list-header>
+    <ion-item lines="inset" *ngFor="let candidate of candidates">
+      <ion-label>
+        {{candidate.CandidateNumber}} - {{candidate.FullName}}
+        ({{candidate.Nickname}})
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

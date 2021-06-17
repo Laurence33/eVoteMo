@@ -93,4 +93,30 @@ export class ApiService {
 
     return this.http.post(this.server+"approveRegistration.php", JSON.stringify(data), options);
   }
+
+  getCandidates() {
+    let headers = new HttpHeaders({
+      'Content-Type' : 'application/json; charset=UTF-8'
+    });
+
+    let options = {
+      headers : headers
+    };
+
+    let data = {};
+
+    return this.http.post(this.server+"getCandidates.php", JSON.stringify(data), options);
+  }
+
+  getCandidatesOfPosition(data) {
+    let headers = new HttpHeaders({
+      'Content-Type' : 'application/json; charset=UTF-8'
+    });
+
+    let options = {
+      headers : headers
+    };
+
+    return this.http.post(this.server+"getCandidatesOfPosition.php", JSON.stringify(data), options);
+  }
 }

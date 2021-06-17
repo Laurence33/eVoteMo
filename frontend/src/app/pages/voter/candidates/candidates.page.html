@@ -1,9 +1,22 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>candidates</ion-title>
+    <ion-title>Candidates</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <ion-list-header>
+      <ion-label>List of Candidates</ion-label>
+    </ion-list-header>
+    <ion-item
+      lines="inset"
+      *ngFor="let position of candidatesCount | keyvalue"
+      button
+      (click)="showList([position.key])"
+    >
+      <ion-label> {{position.key}} </ion-label>
+      <ion-badge slot="end" color="primary">{{position.value}}</ion-badge>
+    </ion-item>
+  </ion-list>
 </ion-content>

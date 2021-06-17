@@ -35,6 +35,10 @@ const routes: Routes = [
     path: 'voter',
     loadChildren: () => import('./pages/voter/voter.module').then( m => m.VoterPageModule)
   },
+  {
+    path: 'candidates-modal',
+    loadChildren: () => import('./pages/components/candidates-modal/candidates-modal.module').then( m => m.CandidatesModalPageModule)
+  },
 ];
 
 @NgModule({

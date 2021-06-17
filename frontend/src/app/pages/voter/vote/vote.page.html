@@ -4,4 +4,116 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label> Choose Candidates </ion-label>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-label>Mayor</ion-label>
+      <ion-select placeholder="Select Candidate" [(ngModel)]="voteMayor">
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option *ngFor="let mayor of mayors" value="{{mayor.id}}"
+          >{{mayor.FullName}} ({{mayor.Nickname}})</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Vice Mayor</ion-label>
+      <ion-select placeholder="Select Candidate" [(ngModel)]="voteVMayor">
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option
+          *ngFor="let vmayor of viceMayors"
+          value="{{vmayor.id}}"
+          >{{vmayor.FullName}} ({{vmayor.Nickname}})</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Sangguniang Bayan</ion-label>
+      <ion-select
+        placeholder="Select Candidate"
+        multiple="true"
+        [(ngModel)]="voteSB"
+      >
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option
+          *ngFor="let sangguniangBayan of sangguniangBayans"
+          value="{{sangguniangBayan.id}}"
+          >{{sangguniangBayan.FullName}}
+          ({{sangguniangBayan.Nickname}})</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Barangay Captain</ion-label>
+      <ion-select placeholder="Select Candidate" [(ngModel)]="voteBrgyCaptain">
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option
+          *ngFor="let brgyCaptain of brgyCaptains"
+          value="{{brgyCaptain.id}}"
+          >{{brgyCaptain.FullName}}
+          ({{brgyCaptain.Nickname}})</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Barangay Kagawad</ion-label>
+      <ion-select
+        placeholder="Select Candidate"
+        multiple="true"
+        [(ngModel)]="voteBrgyKagawads"
+      >
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option
+          *ngFor="let brgyKagawad of brgyKagawads"
+          value="{{brgyKagawad.id}}"
+          >{{brgyKagawad.FullName}}
+          ({{brgyKagawad.Nickname}})</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Barangay SK Chairman</ion-label>
+      <ion-select placeholder="Select Candidate" [(ngModel)]="voteSKChairman">
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option
+          *ngFor="let brgySKChairman of brgySKChairmans"
+          value="{{brgySKChairman.id}}"
+          >{{brgySKChairman.FullName}}
+          ({{brgySKChairman.Nickname}})</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Barangay SK Kagawad</ion-label>
+      <ion-select placeholder="Select Candidate" [(ngModel)]="voteSKKagawads">
+        <ion-select-option value="None">None</ion-select-option>
+        <ion-select-option
+          *ngFor="let brgySKKagawad of brgySKKagawads"
+          value="{{brgySKKagawad.id}}"
+          >{{brgySKKagawad.FullName}}
+          ({{brgySKKagawad.Nickname}})</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-button
+        (click)="submitVote()"
+        expand="block"
+        fill="clear"
+        shape="round"
+        slot="end"
+      >
+        Submit Vote
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
