@@ -21,7 +21,7 @@ if (mysqli_num_rows($q) == 1) {
     }
 } else {
     http_response_code(422);
-    $message['status'] = "Error";
+    $message['status'] = "Error".mysqli_error($con);
 }
 
 //reply

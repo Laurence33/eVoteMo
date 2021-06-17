@@ -43,7 +43,7 @@ export class LoginPage implements OnInit {
         this.router.navigate(['voter']);
       }
     }, (error:any) => {
-      console.log("Error");
+      console.log("Error", error);
       this.presentAlert();
     });
   }
