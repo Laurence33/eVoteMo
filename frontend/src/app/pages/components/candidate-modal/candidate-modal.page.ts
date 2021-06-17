@@ -16,7 +16,7 @@ export class CandidateModalPage implements OnInit {
   positions = Array(
     'Mayor',
     'Vice Mayor',
-    'Sangguniang Bayan',
+    'Counsilor',
     'Barangay Captain',
     'Barangay Kagawad',
     'Barangay SK Chairman',

@@ -12,7 +12,7 @@ export class VotePage implements OnInit {
 
   mayors:any;
   viceMayors:any;
-  sangguniangBayans:any;
+  counsilors:any;
   brgyCaptains:any;
   brgyKagawads:any;
   brgySKChairmans:any;
@@ -20,7 +20,7 @@ export class VotePage implements OnInit {
 
   voteMayor:any;
   voteVMayor:any;
-  voteSB:any;
+  voteCounsilors:any;
   voteBrgyCaptain:any;
   voteBrgyKagawads:any;
   voteSKChairman:any;
@@ -46,12 +46,12 @@ export class VotePage implements OnInit {
     });
 
     let sb = {
-      position: "Sangguniang Bayan"
+      position: "Counsilor"
     }
     this._apiService.getCandidatesOfPosition(sb).subscribe( res => {
-      this.sangguniangBayans = res;
+      this.counsilors = res;
     },err => {
-      console.log("Error getting sangguniang bayan: ", err)
+      console.log("Error getting counsilors: ", err)
     });
     let brgyCaptain = {
       position: "Barangay Captain"
@@ -65,7 +65,7 @@ export class VotePage implements OnInit {
       position: "Barangay Kagawad"
     }
     this._apiService.getCandidatesOfPosition(brgyKagawad).subscribe( res => {
-      this.brgyCaptains = res;
+      this.brgyKagawads = res;
     },err => {
       console.log("Error getting barangay kagawads: ", err)
     });
@@ -73,15 +73,15 @@ export class VotePage implements OnInit {
       position: "Barangay SK Chairman"
     }
     this._apiService.getCandidatesOfPosition(brgySKChairman).subscribe( res => {
-      this.brgyCaptains = res;
+      this.brgySKChairmans = res;
     },err => {
       console.log("Error getting barangay sk chairmans: ", err)
     });
     let brgySKKagawad = {
       position: "Barangay SK Kagawad"
     }
-    this._apiService.getCandidatesOfPosition(brgySKChairman).subscribe( res => {
-      this.brgyCaptains = res;
+    this._apiService.getCandidatesOfPosition(brgySKKagawad).subscribe( res => {
+      this.brgySKKagawads = res;
     },err => {
       console.log("Error getting barangay sk kagawads: ", err)
     });
@@ -90,6 +90,7 @@ export class VotePage implements OnInit {
   onSBSelect() {
 
   }
+
 
 
 }

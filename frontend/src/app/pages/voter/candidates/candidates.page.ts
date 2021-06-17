@@ -15,16 +15,9 @@ export class CandidatesPage implements OnInit {
     public modalController: ModalController
     ) { }
 
-  candidates:any;
   candidatesCount:any;
 
   ngOnInit() {
-    this._apiService.getCandidates().subscribe( (res:any) => {
-      console.log('SUCCESS:', res);
-      this.candidates = res;
-    }, (error: any) => {
-      console.log('ERROR:',error);
-    });
     this._apiService.getCandidatesCount().subscribe((res:any) =>{
       console.log('SUCESS:', res);
       this.candidatesCount = res;

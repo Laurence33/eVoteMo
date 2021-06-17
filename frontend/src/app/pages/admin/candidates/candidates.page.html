@@ -9,7 +9,11 @@
     <ion-list-header>
       <ion-label>List of Candidates</ion-label>
     </ion-list-header>
-    <ion-item lines="inset" *ngFor="let position of candidatesCount | keyvalue">
+    <ion-item
+      lines="inset"
+      *ngFor="let position of candidatesCount | keyvalue"
+      (click)="showList([position.key])"
+    >
       <ion-label> {{position.key}} </ion-label>
       <ion-badge slot="end" color="primary">{{position.value}}</ion-badge>
     </ion-item>

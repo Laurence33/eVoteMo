@@ -69,7 +69,8 @@ CREATE TABLE `tblcandidates` (
   `CandidateNumber` int(3) NOT NULL,
   `FullName` varchar(150) NOT NULL,
   `Nickname` varchar(30) NOT NULL,
-  `Position` varchar(50) NOT NULL
+  `Position` varchar(50) NOT NULL,
+  `Votes` int(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

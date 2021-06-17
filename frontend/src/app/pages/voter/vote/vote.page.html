@@ -33,18 +33,17 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Sangguniang Bayan</ion-label>
+      <ion-label>SB Member</ion-label>
       <ion-select
         placeholder="Select Candidate"
         multiple="true"
-        [(ngModel)]="voteSB"
+        [(ngModel)]="voteCounsilors"
       >
         <ion-select-option value="None">None</ion-select-option>
         <ion-select-option
-          *ngFor="let sangguniangBayan of sangguniangBayans"
-          value="{{sangguniangBayan.id}}"
-          >{{sangguniangBayan.FullName}}
-          ({{sangguniangBayan.Nickname}})</ion-select-option
+          *ngFor="let counsilor of counsilors"
+          value="{{counsilor.id}}"
+          >{{counsilor.FullName}} ({{counsilor.Nickname}})</ion-select-option
         >
       </ion-select>
     </ion-item>
