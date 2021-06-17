@@ -1,9 +1,71 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>results</ion-title>
+    <ion-title>Results</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Mayor</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let mayor of mayors">
+      <ion-label>{{mayor.CandidateNumber}} - {{mayor.FullName}}</ion-label>
+      <ion-badge color="primary" slot="end">{{mayor.Votes}}</ion-badge>
+    </ion-item>
 
+    <ion-list-header>
+      <ion-label>Vice Mayor</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let vMayor of viceMayors">
+      <ion-label>{{vMayor.CandidateNumber}} - {{vMayor.FullName}}</ion-label>
+      <ion-badge color="primary" slot="end">{{vMayor.Votes}}</ion-badge>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>Counsilors</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let counsilor of counsilors">
+      <ion-label
+        >{{counsilor.CandidateNumber}} - {{counsilor.FullName}}</ion-label
+      >
+      <ion-badge color="primary" slot="end">{{counsilor.Votes}}</ion-badge>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>Barangay Captain</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let captain of brgyCaptains">
+      <ion-label>{{captain.CandidateNumber}} - {{captain.FullName}}</ion-label>
+      <ion-badge color="primary" slot="end">{{captain.Votes}}</ion-badge>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>Barangay Kagawad</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let kagawad of brgyKagawads">
+      <ion-label>{{kagawad.CandidateNumber}} - {{kagawad.FullName}}</ion-label>
+      <ion-badge color="primary" slot="end">{{kagawad.Votes}}</ion-badge>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>Barangay SK Chairman</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let chairman of brgySKChairmans">
+      <ion-label
+        >{{chairman.CandidateNumber}} - {{chairman.FullName}}</ion-label
+      >
+      <ion-badge color="primary" slot="end">{{chairman.Votes}}</ion-badge>
+    </ion-item>
+
+    <ion-list-header>
+      <ion-label>Barangay SK Kagawad</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let skKagawad of brgySKKagawads">
+      <ion-label
+        >{{skKagawad.CandidateNumber}} - {{skKagawad.FullName}}</ion-label
+      >
+      <ion-badge color="primary" slot="end">{{skKagawad.Votes}}</ion-badge>
+    </ion-item>
+  </ion-list>
 </ion-content>

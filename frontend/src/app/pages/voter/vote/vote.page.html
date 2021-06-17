@@ -93,7 +93,11 @@
 
     <ion-item>
       <ion-label>Barangay SK Kagawad</ion-label>
-      <ion-select placeholder="Select Candidate" [(ngModel)]="voteSKKagawads">
+      <ion-select
+        placeholder="Select Candidate"
+        multiple="true"
+        [(ngModel)]="voteSKKagawads"
+      >
         <ion-select-option value="None">None</ion-select-option>
         <ion-select-option
           *ngFor="let brgySKKagawad of brgySKKagawads"

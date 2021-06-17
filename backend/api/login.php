@@ -14,6 +14,7 @@ $q = mysqli_query($con, "SELECT * FROM tbllogin WHERE `Email`='$email' AND `Pass
 if (mysqli_num_rows($q) == 1) {
     http_response_code(201);
     $message['status'] = "Success";
+    $message['account'] = mysqli_fetch_assoc($q);
     if ($email == 'admin@admin.com') {
         $_SESSION['alogin'] = "admin";
     } else {
@@ -21,7 +22,7 @@ if (mysqli_num_rows($q) == 1) {
     }
 } else {
     http_response_code(422);
-    $message['status'] = "Error".mysqli_error($con);
+    $message['status'] = "Error" . mysqli_error($con);
 }
 
 //reply

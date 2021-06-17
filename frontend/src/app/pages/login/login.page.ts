@@ -33,7 +33,10 @@ export class LoginPage implements OnInit {
 
     this._service.login(data, 'login.php').subscribe( async (res:any) => {
       console.log("SUCCESS");
+      let account = res.account;
+
       if(this.email == "admin@admin.com"){
+        console.log(account);
         await this.storage.set('user', "admin");
         await this.storage.set('role', "admin");
         this.router.navigate(['admin']);
@@ -42,6 +45,8 @@ export class LoginPage implements OnInit {
         await this.storage.set('role', "voter");
         this.router.navigate(['voter']);
       }
+      await this.storage.set('id', account.id);
+
     }, (error:any) => {
       console.log("Error", error);
       this.presentAlert();

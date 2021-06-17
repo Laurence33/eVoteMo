@@ -119,4 +119,16 @@ export class ApiService {
 
     return this.http.post(this.server+"getCandidatesOfPosition.php", JSON.stringify(data), options);
   }
+
+  castVote(data) {
+    let headers = new HttpHeaders({
+      'Content-Type' : 'application/json; charset=UTF-8'
+    });
+
+    let options = {
+      headers : headers
+    };
+
+    return this.http.post(this.server+"voter/castVote.php", JSON.stringify(data), options);
+  }
 }

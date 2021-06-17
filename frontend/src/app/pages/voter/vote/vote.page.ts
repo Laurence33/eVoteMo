@@ -1,3 +1,5 @@
+import { AlertController } from '@ionic/angular';
+import { Storage } from '@ionic/storage-angular';
 import { ApiService } from './../../../services/api.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VotePage implements OnInit {
 
-  constructor(public _apiService: ApiService) { }
+  constructor(
+    public _apiService: ApiService,
+    public storage: Storage,
+    public alertController: AlertController
+    ) { }
 
   mayors:any;
   viceMayors:any;
@@ -91,6 +97,44 @@ export class VotePage implements OnInit {
 
   }
 
+  async submitVote(){
+    let voterId:any = await this.storage.get('id')
 
+    let vote = {
+      voterId: voterId,
+      mayor: this.voteMayor,
+      vMayor: this.voteVMayor,
+      counsilors: this.voteCounsilors,
+      brgyCaptain: this.voteBrgyCaptain,
+      brgyKagawads: this.voteBrgyKagawads,
+      brgySKChairman: this.voteSKChairman,
+      brgySKKagawads: this.voteSKKagawads
+    }
+    console.log(vote);
+    this._apiService.castVote(vote).subscribe( res => {
+      console.log("Success: ", res);
+      if(res['status'] == "Error" ){
+        this.presentAlert(res['message']);
+      }
+    },err => {
+      console.log("Error submitting vote: ", err);
+    });
+    console.log("Mayor:"+this.voteMayor, "ViceMayor"+this.voteVMayor, "counsilors: "+this.voteCounsilors, "Captain: "+this.voteBrgyCaptain, "Kagawad:"+this.voteBrgyKagawads, "SK Chairman:" +this.voteSKChairman, "SK Kagawad: " + this.voteSKKagawads);
+  }
 
+  async presentAlert(message) {
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: 'Error',
+      message: message,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
+  }
 }
+
+

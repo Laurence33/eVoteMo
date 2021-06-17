@@ -43,6 +43,23 @@ CREATE TABLE `tblvoters` (
   `VoterId` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+
+--
+-- Table structure for table `tblvotes`
+--
+
+CREATE TABLE `tblvotes` (
+  `id` int(30) NOT NULL,
+  `VoterId` int(50) NOT NULL,
+  `Mayor` int(4) NOT NULL,
+  `ViceMayor` int(4) NOT NULL,
+  `Counsilors` varchar(50) NOT NULL,
+  `BarangayCaptain` int(4) NOT NULL,
+  `BarangayKagawads` varchar(50) NOT NULL,
+  `BarangaySKChairman` int(4) NOT NULL,
+  `BarangaySKKagawads` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 --
 -- Table structure for table `tblregistrations`
 --
@@ -93,6 +110,12 @@ ALTER TABLE `tbllogin`
 ALTER TABLE `tblvoters`
   ADD PRIMARY KEY (`id`);
 
+--
+-- Indexes for table `tblvotes`
+--
+ALTER TABLE `tblvotes`
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- Indexes for table `tblregistrations`
@@ -124,6 +147,12 @@ ALTER TABLE `tbllogin`
 --
 ALTER TABLE `tblvoters`
   MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tblvotes`
+--
+ALTER TABLE `tblvotes`
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 
 --
