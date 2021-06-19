@@ -17,12 +17,22 @@ $gender = $data['gender'];
 $voterId = $data['voterId'];
 $password = md5($data['password']);
 
-$q = mysqli_query($con, "INSERT INTO `tblregistrations` ( `FirstName`, `MiddleName`, `LastName`, `Age`, `Email`, `Birthdate`, `Gender`, `VoterId`, `Password`) VALUES ( '$fName', '$mName', '$lName', $age, '$email', '$birthdate', '$gender', $voterId, '$password');");
-
-if ($q) {
-    http_response_code(201);
-    $message['status'] = "Success";
+$q = mysqli_query($con, "SELECT * FROM tblregistrations WHERE Email='$email'");
+if ($q && mysqli_num_rows($q) > 0) {
+    $message['status'] = "Error";
+    $message['message'] = "Already registered, please wait for confirmation of your account.";
 } else {
+    $q = mysqli_query($con, "INSERT INTO `tblregistrations` ( `FirstName`, `MiddleName`, `LastName`, `Age`, `Email`, `Birthdate`, `Gender`, `VoterId`, `Password`) VALUES ( '$fName', '$mName', '$lName', $age, '$email', '$birthdate', '$gender', '$voterId', '$password');");
+
+    if ($q) {
+        http_response_code(201);
+        $message['status'] = "Success";
+    } else {
+        http_response_code(422);
+        $message['status'] = "Error";
+    }
+}
+if (!$q) {
     http_response_code(422);
     $message['status'] = "Error";
 }

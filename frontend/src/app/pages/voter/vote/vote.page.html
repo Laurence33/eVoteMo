@@ -1,10 +1,11 @@
-<ion-header>
-  <ion-toolbar>
+<ion-header color="blue">
+  <ion-toolbar color="blue">
     <ion-title>Cast Vote</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-progress-bar *ngIf="loading" type="indeterminate"></ion-progress-bar>
   <ion-list>
     <ion-list-header>
       <ion-label> Choose Candidates </ion-label>
@@ -77,37 +78,38 @@
         >
       </ion-select>
     </ion-item>
+    <div *ngIf="youth">
+      <ion-item>
+        <ion-label>Barangay SK Chairman</ion-label>
+        <ion-select placeholder="Select Candidate" [(ngModel)]="voteSKChairman">
+          <ion-select-option value="None">None</ion-select-option>
+          <ion-select-option
+            *ngFor="let brgySKChairman of brgySKChairmans"
+            value="{{brgySKChairman.id}}"
+            >{{brgySKChairman.FullName}}
+            ({{brgySKChairman.Nickname}})</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Barangay SK Chairman</ion-label>
-      <ion-select placeholder="Select Candidate" [(ngModel)]="voteSKChairman">
-        <ion-select-option value="None">None</ion-select-option>
-        <ion-select-option
-          *ngFor="let brgySKChairman of brgySKChairmans"
-          value="{{brgySKChairman.id}}"
-          >{{brgySKChairman.FullName}}
-          ({{brgySKChairman.Nickname}})</ion-select-option
+      <ion-item>
+        <ion-label>Barangay SK Kagawad</ion-label>
+        <ion-select
+          placeholder="Select Candidate"
+          multiple="true"
+          [(ngModel)]="voteSKKagawads"
         >
-      </ion-select>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Barangay SK Kagawad</ion-label>
-      <ion-select
-        placeholder="Select Candidate"
-        multiple="true"
-        [(ngModel)]="voteSKKagawads"
-      >
-        <ion-select-option value="None">None</ion-select-option>
-        <ion-select-option
-          *ngFor="let brgySKKagawad of brgySKKagawads"
-          value="{{brgySKKagawad.id}}"
-          >{{brgySKKagawad.FullName}}
-          ({{brgySKKagawad.Nickname}})</ion-select-option
-        >
-      </ion-select>
-    </ion-item>
-    <ion-item lines="none">
+          <ion-select-option value="None">None</ion-select-option>
+          <ion-select-option
+            *ngFor="let brgySKKagawad of brgySKKagawads"
+            value="{{brgySKKagawad.id}}"
+            >{{brgySKKagawad.FullName}}
+            ({{brgySKKagawad.Nickname}})</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </div>
+    <ion-item lines="none" *ngIf="voting === 'Open'; else close">
       <ion-button
         (click)="submitVote()"
         expand="block"
@@ -118,5 +120,14 @@
         Submit Vote
       </ion-button>
     </ion-item>
+    <ng-template #close>
+      <ion-item
+        lines="none"
+        style="--color: var(--ion-color-warning)"
+        class="ion-text-end"
+      >
+        <ion-label>Voting is not yet open.</ion-label>
+      </ion-item>
+    </ng-template>
   </ion-list>
 </ion-content>

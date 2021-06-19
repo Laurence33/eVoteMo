@@ -1,4 +1,24 @@
-<ion-content>
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header color="blue">
+    <ion-toolbar color="blue">
+      <ion-title>Start Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item button (click)="gotoProfile()">
+        <ion-icon name="person"></ion-icon>
+        <ion-label>&nbsp; Profile</ion-label>
+      </ion-item>
+      <ion-item button (click)="logoutVoter()">
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>&nbsp; Logout</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-content id="main">
   <ion-tabs>
     <ion-tab-bar slot="bottom">
       <ion-tab-button tab="vote">

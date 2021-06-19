@@ -32,8 +32,9 @@ export class LoginPage implements OnInit {
     };
 
     this._service.login(data, 'login.php').subscribe( async (res:any) => {
-      console.log("SUCCESS");
+      console.log("SUCCESS: ", res);
       let account = res.account;
+
 
       if(this.email == "admin@admin.com"){
         console.log(account);
@@ -41,8 +42,16 @@ export class LoginPage implements OnInit {
         await this.storage.set('role', "admin");
         this.router.navigate(['admin']);
       }else{
+        let category:string;
+
+        if (res.profile.Age >= 18 && res.profile.Age <= 21){
+          category = "Youth";
+        } else category = "Adult";
+
         await this.storage.set('user', this.email);
+        await this.storage.set('id', res.account.UserId);
         await this.storage.set('role', "voter");
+        await this.storage.set('category', category);
         this.router.navigate(['voter']);
       }
       await this.storage.set('id', account.id);

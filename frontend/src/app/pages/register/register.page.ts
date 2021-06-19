@@ -22,6 +22,7 @@ export class RegisterPage implements OnInit {
   cpassword: string = '';
 
   disabledButton;
+  regexp = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
 
   constructor(
     private _apiService: ApiService,
@@ -45,12 +46,22 @@ export class RegisterPage implements OnInit {
       this.presentToast('Gender is required')
     }else if(this.age == null) {
       this.presentToast('Age is required');
+    }else if(this.age < 18 || this.age > 120) {
+      this.presentToast('Age is invalid');
     }else if(this.email == ''){
       this.presentToast('Email is required');
+    }else if(!this.regexp.test(this.email)){
+      this.presentToast('Email is invalid');
     }else if(this.birthdate == null) {
       this.presentToast('Birthdate is required');
     }else if(this.voterId == '') {
       this.presentToast('Voter ID is required');
+    }else if(this.voterId.length != 24) {
+      this.presentToast('Voter ID is invalid');
+    }else if(this.password == '') {
+      this.presentToast('Password is required');
+    }else if(this.cpassword == '') {
+      this.presentToast('Please confirm your password');
     }else if(this.password != this.cpassword) {
       this.presentToast('Password does not match');
     }else{
@@ -73,6 +84,7 @@ export class RegisterPage implements OnInit {
           password: this.password
         }
         this._apiService.postData(data, 'voter/register.php').subscribe((res:any) => {
+          console.log(res);
           if(res.status == "Success") {
             loader.dismiss();
             this.disabledButton = false;
@@ -81,12 +93,13 @@ export class RegisterPage implements OnInit {
           }else {
             loader.dismiss();
             this.disabledButton = false;
-            this.presentToast('Register failed');
+            this.presentToast(res.message);
           }
         }, err => {
           loader.dismiss();
           this.disabledButton = false;
           this.presentAlert('An error occurred');
+          console.log(err);
         });
       })
     }

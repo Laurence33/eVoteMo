@@ -1,3 +1,4 @@
+import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Storage } from '@ionic/storage-angular';
@@ -11,7 +12,8 @@ export class AdminPage implements OnInit {
 
   constructor(
     public storage: Storage,
-    public router: Router
+    public router: Router,
+    public menu:MenuController
     ) { }
 
   ngOnInit() {
@@ -22,5 +24,16 @@ export class AdminPage implements OnInit {
     if(await this.storage.get('role') != 'admin'){
       this.router.navigate(['login']);
     }
+  }
+
+  openMenu() {
+    this.menu.enable(true, 'first');
+    this.menu.open('first');
+  }
+
+  logoutAdmin() {
+    console.log("Logout");
+    this.storage.clear();
+    this.router.navigate(['login']);
   }
 }

@@ -24,7 +24,8 @@ $password = $data['Password'];
 
 mysqli_autocommit($con, false); // turn off auto commit for transaction
 $q = mysqli_query($con, "INSERT INTO `tbllogin` (`Email`, `Password`) VALUES ('$email', '$password');");
-$q = mysqli_query($con, "INSERT INTO `tblvoters` ( `FirstName`, `MiddleName`, `LastName`, `Age`, `Email`, `Birthdate`,`Gender`, `VoterId`) VALUES ( '$firstName', '$middleName', '$lastName', $age, '$email', '$birthdate', '$gender', '$voterId');");
+$lastId = mysqli_insert_id($con);
+$q = mysqli_query($con, "INSERT INTO `tblvoters` ( `UserId`, `FirstName`, `MiddleName`, `LastName`, `Age`, `Email`, `Birthdate`,`Gender`, `VoterId`) VALUES ( '$lastId','$firstName', '$middleName', '$lastName', $age, '$email', '$birthdate', '$gender', '$voterId');");
 
 $q = mysqli_query($con, "DELETE FROM `tblregistrations` WHERE id=$id;");
 

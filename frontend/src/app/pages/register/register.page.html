@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header color="blue">
   <ion-toolbar color="blue">
     <ion-title>Register</ion-title>
   </ion-toolbar>
@@ -20,7 +20,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Age</ion-label>
-      <ion-input type="number" [(ngModel)]="age"></ion-input> </ion-item
+      <ion-input
+        type="number"
+        min="18"
+        max="120"
+        [(ngModel)]="age"
+      ></ion-input> </ion-item
     ><ion-item>
       <ion-label position="floating">Email</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
@@ -38,7 +43,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Voter's ID</ion-label>
-      <ion-input type="number" [(ngModel)]="voterId"></ion-input>
+      <ion-input
+        type="string"
+        minlength="24"
+        maxlength="24"
+        [(ngModel)]="voterId"
+      ></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Create Login Password</ion-label>
@@ -48,8 +58,29 @@
       <ion-label position="floating">Confirm Password</ion-label>
       <ion-input type="password" [(ngModel)]="cpassword"></ion-input>
     </ion-item>
-    <ion-button (click)="tryRegister()" fill="solid " shape="round">
-      Register
-    </ion-button>
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="3"></ion-col>
+        <ion-col size="6">
+          <ion-button
+            (click)="tryRegister()"
+            fill="solid"
+            shape="round"
+            expand="full"
+          >
+            Register
+          </ion-button>
+        </ion-col>
+        <ion-col size="3"></ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item>
+      <ion-text>
+        <span>
+          Already have an account?
+          <a routerLink="/login" color="tertiary">Login here.</a>
+        </span>
+      </ion-text>
+    </ion-item>
   </div>
 </ion-content>

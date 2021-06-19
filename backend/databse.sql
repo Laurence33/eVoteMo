@@ -33,6 +33,7 @@ CREATE TABLE `tbllogin` (
 
 CREATE TABLE `tblvoters` (
   `id` int(30) NOT NULL,
+  `UserId` int(30) NOT NULL,
   `FirstName` varchar(30) NOT NULL,
   `MiddleName` varchar(30) NOT NULL,
   `LastName` varchar(30) NOT NULL,

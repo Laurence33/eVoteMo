@@ -1,0 +1,32 @@
+<ion-header color="blue">
+  <ion-toolbar color="blue">
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="profile !== null">
+    <ion-item>
+      <ion-label>Voter ID: </ion-label>
+      <ion-text> {{profile.VoterId}} </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Name: </ion-label>
+      <ion-text>
+        {{profile.FirstName}} {{profile.MiddleName}} {{profile.LastName}}
+      </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Age: </ion-label>
+      <ion-text> {{profile.Age}} </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Email: </ion-label>
+      <ion-text> {{profile.Email}} </ion-text>
+    </ion-item>
+    <ion-item>
+      <ion-label>Gender: </ion-label>
+      <ion-text> {{profile.Gender}} </ion-text>
+    </ion-item>
+  </ion-list>
+</ion-content>
